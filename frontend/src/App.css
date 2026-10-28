@@ -1,0 +1,156 @@
+/* App-specific styles */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Loading Screen */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1rem;
+}
+
+.loading-screen .spinner {
+  width: 60px;
+  height: 60px;
+  border-width: 6px;
+}
+
+.loading-screen p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+}
+
+/* Error Screen */
+.error-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.error-screen .alert {
+  max-width: 600px;
+  text-align: center;
+}
+
+.error-screen .alert p {
+  margin-top: 0.5rem;
+}
+
+/* Sidebar Toggle */
+.sidebar-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  padding: 0.5rem;
+}
+
+.sidebar-toggle:hover {
+  color: var(--primary-color);
+}
+
+/* Mobile Sidebar Overlay */
+@media (max-width: 1200px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  .main-wrapper {
+    margin-left: 0;
+  }
+
+  .header {
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 1rem;
+  }
+
+  .header-title {
+    font-size: 1rem;
+  }
+
+  .header-actions {
+    display: none;
+  }
+}
+
+/* Responsive Main Content */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+/* Page Transition */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
